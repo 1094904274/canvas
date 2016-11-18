@@ -16,6 +16,9 @@
 
 
     cobj.fillRect(x,y,w,h); 
+
+
+
 ## 对于canvas图像的修饰
 1.  对于填充的样式的修饰  
   1.1 fillStyle   `可以用来设置canvas图像的填充样式,接收表示颜色的值,也可以接收渐变的对象和html对象`  
