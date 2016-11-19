@@ -1,21 +1,18 @@
 # canvas基础
-## canvas 标签说明   
+## canvas 标签说明 
 1. 属性  width  height   用来指定canvas的区域大小   
 2. canvas默认的大小是 300*150,宽高不能设置在css里面     
 
 ## javascript绘图
-1.  获得canvas对象    
-
-
-    var canvas=document.querySelect("canvas")   
+1.  获得canvas对象
+        
+        var canvas=document.querySelect("canvas")       
 2. 获得canvas的2d对象
 
-
-    var cobj=canvas.getContext("2d")
+        var cobj=canvas.getContext("2d")
 3. 进行各种2d图形的操作
 
-
-    cobj.fillRect(x,y,w,h); 
+        cobj.fillRect(x,y,w,h); 
 
 
 

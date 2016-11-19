@@ -13,11 +13,39 @@
            var img=document.querySelector("img");
            var canvas=document.getElementsByTagName("canvas")[0];
            var cobj=canvas.getContext("2d");
-           cobj.strokeRect(0,0,100,100);
+           var arr=[];
+            canvas.onmousedown=function(e){
+                var cx= e.offsetX;
+                var cy= e.offsetY;
+                canvas.onmousemove=function(e){
+                    cobj.clearRect(0,0,canvas.width,canvas.height);
+                    if(arr.length>0){
+                        cobj.putImageData(arr[arr.length-1],0,0);
+                    }
+                    var mx= e.offsetX;
+                    var my= e.offsetY;
+                    cobj.beginPath();
+                    cobj.moveTo(cx,cy);
+                    cobj.lineTo(mx,my);
+                    cobj.stroke();
+                }
+                canvas.onmouseup=function(e){
+                    arr.push(cobj.getImageData(0,0,canvas.width,canvas.height));
+                    canvas.onmousemove=null;
+                    canvas.onmouseup=null;
+                }
+            }
 
-
-
-
+            var back=document.querySelector("input");
+            back.onclick=function(){
+                if(arr.length==0){
+                    alert("不能后退");
+                    cobj.clearRect(0,0,canvas.width,canvas.height);
+                }else{
+                    var data=arr.pop();
+                    cobj.putImageData(data,0,0);
+                }
+            }
         }
     </script>
 </head>
@@ -25,6 +53,7 @@
 <canvas width="600" height="300">
 
 </canvas>
+<input type="button" value="返回">
 <img src="1.png" alt="" hidden>
 
 </body>
